@@ -178,7 +178,7 @@ if __name__ == '__main__':
     num_hiddens = 512
     net = RNNModelScratch(len(vocab), num_hiddens, d2l.try_gpu(), get_params, init_run_state, rnn)
     state = net.begin_state(X.shape[0], d2l.try_gpu())
-    Y, new_state = net(X.to(d2l.try_gpu()), state)
+    Y, new_state = net(X.to(d2l.try_gpu()), state)  # __call__
     Y.shape, len(new_state), new_state[0].shape
     print(Y.shape)
     print(len(new_state))
