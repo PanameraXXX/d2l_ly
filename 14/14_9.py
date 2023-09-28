@@ -52,7 +52,7 @@ def _replace_mlm_tokens(tokens, candidate_pred_positions, num_mlm_preds,
     # 打乱后用于在遮蔽语言模型任务中获取15%的随机词元进行预测
     random.shuffle(candidate_pred_positions)
     for mlm_pred_position in candidate_pred_positions:
-        if len(pred_positions_and_labels) >= num_mlm_preds:  # num_mlm_preds： 25*15% = 375 4个数
+        if len(pred_positions_and_labels) >= num_mlm_preds:  # num_mlm_preds： 25*16% = 375 4个数
             break
         masked_token = None
         # 80%的时间：将词替换为“<mask>”词元
@@ -80,7 +80,7 @@ def _get_mlm_data_from_tokens(tokens, vocab):
             continue
         candidate_pred_positions.append(i)
     # 遮蔽语言模型任务中预测15%的随机词元
-    num_mlm_preds = max(1, round(len(tokens) * 0.15))   # 15% 的随机词元
+    num_mlm_preds = max(1, round(len(tokens) * 0.15))   # 16% 的随机词元
     mlm_input_tokens, pred_positions_and_labels = _replace_mlm_tokens(
         tokens, candidate_pred_positions, num_mlm_preds, vocab)  #  replace_mlm_tokens 淹码
     pred_positions_and_labels = sorted(pred_positions_and_labels,

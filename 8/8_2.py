@@ -105,7 +105,7 @@ if __name__ == '__main__':
     # print(lines[10])
     #
     # tokens = tokenize(lines)
-    # for i in range(11):
+    # for i in range(14):
     #     print(tokens[i])
     #
     # vocab = Vocab(tokens)
